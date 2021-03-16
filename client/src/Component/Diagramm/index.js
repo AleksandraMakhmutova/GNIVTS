@@ -15,11 +15,16 @@ export default function Diagramm() {
       .then((json) => setFakeInfo2(json));
   }, []);
 
-  
   return (
     <div className={style.conteiner}>
-      {fakeInfo && fakeInfo.map((el) => <Column height={el.body.length} />)}
-      {fakeInfo2 && fakeInfo2.map((el) => <Column height={el.body.length} />)}
+      {fakeInfo &&
+        fakeInfo.map((el) => (
+          <Column height={el.body.length} key={el.name.length} />
+        ))}
+      {fakeInfo2 &&
+        fakeInfo2.map((el) => (
+          <Column height={el.body.length} key={el.name.length} />
+        ))}
     </div>
   );
 }
