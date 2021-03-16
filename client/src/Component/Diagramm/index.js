@@ -7,11 +7,16 @@ export default function Diagramm() {
   const [fakeInfo, setFakeInfo] = useState(null);
   const [fakeInfo2, setFakeInfo2] = useState(null);
   const [chooseItem, setChooseItem] = useState([]);
+  const pageRandom = Math.floor(Math.random() * 10);
+  console.log(pageRandom);
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/comments?postId=1")
+    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${pageRandom}`)
       .then((response) => response.json())
       .then((json) => setFakeInfo(json));
-    fetch("https://jsonplaceholder.typicode.com/comments?postId=2")
+    fetch(
+      `https://jsonplaceholder.typicode.com/comments?postId=${pageRandom + 1}`
+    )
       .then((response) => response.json())
       .then((json) => setFakeInfo2(json));
   }, []);
